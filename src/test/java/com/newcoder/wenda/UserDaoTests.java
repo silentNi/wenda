@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Random;
@@ -14,20 +13,16 @@ import java.util.Random;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 //@Sql("/init-schema.sql")
-public class InitDataBaseTests {
+public class UserDaoTests {
 	@Autowired
 	UserDAO userDAO;
 
 	@Test
-	public void initDatabase() {
+	public void userDaoTests() {
 		Random random = new Random();
 		for(int i=13; i<22;++i){
-			User user =new User();
-			user.setName(String.format("USER%d",i));
-			user.setPassword("");
-			user.setSalt("");
-			user.setHeadUrl(String.format("http://images.newcoder.com/head/%dt.png",random.nextInt(1000)));
-			userDAO.addUser(user);
+			User user = userDAO.selectUserById(i);
+			System.out.println(user.toString());
 		}
 	}
 
