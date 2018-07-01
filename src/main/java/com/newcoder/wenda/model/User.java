@@ -7,6 +7,17 @@ public class User {
     private String  salt;
     private String headUrl;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
+                ", headUrl='" + headUrl + '\'' +
+                '}';
+    }
+
     public int getId() {
         return id;
     }
