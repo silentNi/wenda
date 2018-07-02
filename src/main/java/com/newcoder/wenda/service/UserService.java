@@ -10,10 +10,13 @@ public class UserService {
     @Autowired
     private UserDAO userDAO;
 
-    public  int addUser(User user){
+    public int addUser(User user) {
         return userDAO.addUser(user);
     }
 
+    public boolean userJudge(String username, String password) {
+        return userDAO.userJudge(username, password) == null ? false : true;
+    }
 
 
 }

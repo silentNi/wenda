@@ -69,6 +69,7 @@ public class SensitiveService implements InitializingBean {
         public boolean isEnd(){
             return end;
         }
+
     }
 
     private  TrieNode root = new TrieNode();
@@ -87,7 +88,7 @@ public class SensitiveService implements InitializingBean {
     /***
      *  对文本进行敏感词过滤 时间复杂度O(n) 线性
      * @param text
-     * @return
+     * @return 返回过滤后的文本
      */
     public String filter(String text){
         if(StringUtils.isBlank(text)){ // 为空直接返回
@@ -98,7 +99,13 @@ public class SensitiveService implements InitializingBean {
         TrieNode tempNode =root;
         int begin=0;
         int position=0;
+        /***
+         * Instances of StringBuilder are not safe for use by multiple threads.
+         * If such synchronization is required
+         * then it is recommended that StringBuffer be used
+         */
         StringBuffer sb= new StringBuffer();// 结果
+//        StringBuilder sb= new StringBuilder(); //非多线程安全
 
         while(position < text.length()){
             Character key =text.charAt(position);
@@ -139,6 +146,15 @@ public class SensitiveService implements InitializingBean {
         s.addWords("赌博");
         s.addWords("好色");
         System.out.println(s.filter("你▽是好▽色▽色▽情好色情"));
+        s.addWords("大众点评");
+        s.addWords("如果");
+        s.addWords("遇到");
+        s.addWords("技术");
+        System.out.println(s.filter("如果你觉得我们的高可用仍有提升空间，欢迎来大众点评基础平台研发组；\n" +
+                "\n" +
+                "如果你想更深入学习高可用的技术细节，欢迎来大众点评基础平台研发组；\n" +
+                "\n" +
+                "如果你想遇到一群志同道合的技术开发，欢迎来大众点评基础平台研发组。"));
 
     }
 }

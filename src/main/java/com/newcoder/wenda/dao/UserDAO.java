@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 @Mapper
 public interface UserDAO {
    String TABLE_NAME=" user ";
@@ -15,10 +17,11 @@ public interface UserDAO {
             , " values(#{name},#{password},#{salt},#{headUrl})"})
     int addUser(User user);
     @Select({"select ",SELECT_FIELDS," from ",TABLE_NAME," where id=#{id}"})
-    User selectUserById(int id);
+    List<User> selectUserById(int id);
 
     @Select({"select ",SELECT_FIELDS," from ",TABLE_NAME," where name=#{name}"})
-    User selectUserByName(String name);
+    List<User> selectUserByName(String name);
 
-
+    @Select({"select ",SELECT_FIELDS," from ",TABLE_NAME," where name=#{name} and password=#{password}"})
+    List<User> userJudge(String name, String password);
 }
