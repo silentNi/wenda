@@ -1,0 +1,7 @@
+Q1： error_message: mybatis org.apache.ibatis.binding.BindingException: Invalid bound statement (not found)
+mybatis dao 和 xml 不匹配 无法绑定
+
+解决方案：https://stackoverflow.com/questions/33478990/mybatis-org-apache-ibatis-binding-bindingexception-invalid-bound-statement-not/47569717
+I once made a similar mistake which turned out that the directories were incorrect.
+If the UserMapper's namespace is com.mybatisdemo.mappers.UserMapper, make sure mapper-locations is src/resources/com/mybatisdemo/mappers/.
+Sometimes we might create a directory named com.mybatisdemo.mappers, then its location turns out to be src/resources/com.mybatisdemo.mappers which is wrong.

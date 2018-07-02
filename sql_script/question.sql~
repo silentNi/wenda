@@ -1,0 +1,11 @@
+CREATE TABLE `newcoder`.`question` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '	',
+  `title` VARCHAR(64) NULL,
+  `content` VARCHAR(64) NULL,
+  `create_date` DATE NULL,
+  `user_id` VARCHAR(64) NULL,
+  `commentCount` INT NULL,
+  PRIMARY KEY (`id`));
+ALTER TABLE `newcoder`.`question` 
+CHANGE COLUMN `user_id` `user_id` INT NULL DEFAULT NULL ;
+
