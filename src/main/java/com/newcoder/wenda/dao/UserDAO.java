@@ -17,7 +17,7 @@ public interface UserDAO {
             , " values(#{name},#{password},#{salt},#{headUrl})"})
     int addUser(User user);
     @Select({"select ",SELECT_FIELDS," from ",TABLE_NAME," where id=#{id}"})
-    List<User> selectUserById(int id);
+    User selectUserById(int id);
 
     @Select({"select ",SELECT_FIELDS," from ",TABLE_NAME," where name=#{name}"})
     List<User> selectUserByName(String name);
