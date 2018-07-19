@@ -15,7 +15,7 @@ public class UserService {
     }
 
     public boolean userJudge(String username, String password) {
-        return userDAO.userJudge(username, password) == null ? false : true;
+        return userDAO.userJudge(username, password) != null ;
     }
 
 
