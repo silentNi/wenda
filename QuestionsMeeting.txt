@@ -5,3 +5,10 @@ mybatis dao 和 xml 不匹配 无法绑定
 I once made a similar mistake which turned out that the directories were incorrect.
 If the UserMapper's namespace is com.mybatisdemo.mappers.UserMapper, make sure mapper-locations is src/resources/com/mybatisdemo/mappers/.
 Sometimes we might create a directory named com.mybatisdemo.mappers, then its location turns out to be src/resources/com.mybatisdemo.mappers which is wrong.
+
+
+Q2：Thread#start() And Runable#run() difference  https://stackoverflow.com/questions/8579657/whats-the-difference-between-thread-start-and-runnable-run
+
+A1: If you just invoke run() directly, it's executed on the calling thread, just like any other method call. Thread.start() is required to actually create a new thread so that the runnable's run method is executed in parallel.
+A2: The difference is that Thread.start() starts a thread that calls the run() method, while Runnable.run() just calls the run() method on the current thread.
+
