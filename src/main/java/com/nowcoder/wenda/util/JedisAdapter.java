@@ -140,42 +140,42 @@ public class JedisAdapter implements InitializingBean {
         print(38, jedis.zrank(rankKey, "Ben"));
         print(39, jedis.zrevrank(rankKey, "Ben"));
 
-        String setKey = "zset";
-        jedis.zadd(setKey, 1, "a");
-        jedis.zadd(setKey, 1, "b");
-        jedis.zadd(setKey, 1, "c");
-        jedis.zadd(setKey, 1, "d");
-        jedis.zadd(setKey, 1, "e");
-
-        print(40, jedis.zlexcount(setKey, "-", "+"));
-        print(41, jedis.zlexcount(setKey, "(b", "[d"));
-        print(42, jedis.zlexcount(setKey, "[b", "[d"));
-        jedis.zrem(setKey, "b");
-        print(43, jedis.zrange(setKey, 0, 10));
-        jedis.zremrangeByLex(setKey, "(c", "+");
-        print(44, jedis.zrange(setKey, 0 ,2));
-
-        /*
-        JedisPool pool = new JedisPool();
-        for (int i = 0; i < 100; ++i) {
-            Jedis j = pool.getResource();
-            print(45, j.get("pv"));
-            j.close();
-        }*/
-
-        User user = new User();
-        user.setName("xx");
-        user.setPassword("ppp");
-        user.setHeadUrl("a.png");
-        user.setSalt("salt");
-        user.setId(1);
-        print(46, JSONObject.toJSONString(user));
-        jedis.set("user1", JSONObject.toJSONString(user));
-
-        String value = jedis.get("user1");
-        User user2 = JSON.parseObject(value, User.class);
-        print(47, user2);
-        int k = 2;
+//        String setKey = "zset";
+//        jedis.zadd(setKey, 1, "a");
+//        jedis.zadd(setKey, 1, "b");
+//        jedis.zadd(setKey, 1, "c");
+//        jedis.zadd(setKey, 1, "d");
+//        jedis.zadd(setKey, 1, "e");
+//
+//        print(40, jedis.zlexcount(setKey, "-", "+"));
+//        print(41, jedis.zlexcount(setKey, "(b", "[d"));
+//        print(42, jedis.zlexcount(setKey, "[b", "[d"));
+//        jedis.zrem(setKey, "b");
+//        print(43, jedis.zrange(setKey, 0, 10));
+//        jedis.zremrangeByLex(setKey, "(c", "+");
+//        print(44, jedis.zrange(setKey, 0 ,2));
+//
+//        /*
+//        JedisPool pool = new JedisPool();
+//        for (int i = 0; i < 100; ++i) {
+//            Jedis j = pool.getResource();
+//            print(45, j.get("pv"));
+//            j.close();
+//        }*/
+//
+//        User user = new User();
+//        user.setName("xx");
+//        user.setPassword("ppp");
+//        user.setHeadUrl("a.png");
+//        user.setSalt("salt");
+//        user.setId(1);
+//        print(46, JSONObject.toJSONString(user));
+//        jedis.set("user1", JSONObject.toJSONString(user));
+//
+//        String value = jedis.get("user1");
+//        User user2 = JSON.parseObject(value, User.class);
+//        print(47, user2);
+//        int k = 2;
     }
 
     @Override

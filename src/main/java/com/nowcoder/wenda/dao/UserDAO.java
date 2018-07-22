@@ -16,7 +16,7 @@ public interface UserDAO {
             , " values(#{name},#{password},#{salt},#{headUrl})"})
     int addUser(User user);
 
-    @Update({" update from ", TABLE_NAME, " set password =#{pwd}  ", " where id=#{id}"})
+    @Update({" update ", TABLE_NAME, " set password =#{pwd}  ", " where id=#{id}"})
     int updatePassword(@Param("id") int id,
                        @Param("pwd") String pwd);
 
@@ -27,5 +27,5 @@ public interface UserDAO {
     List<User> selectUserByName(String name);
 
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where name=#{name} and password=#{password}"})
-    List<User> userJudge(String name, String password);
+    List<User> userJudge(@Param("name") String name, @Param("password")String password);
 }

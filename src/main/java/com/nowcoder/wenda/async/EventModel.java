@@ -11,6 +11,11 @@ public class EventModel {
     private int actorId;
     private int entityType;
     private int entityId;
+
+    public void setType(EventType type) {
+        this.type = type;
+    }
+
     private int senderId;
     private int ownerId;
     private Map<String, String> exts = new HashMap<>();
@@ -74,6 +79,10 @@ public class EventModel {
     public EventModel setOwnerId(int ownerId) {
         this.ownerId = ownerId;
         return this;
+    }
+
+    public EventType getType() {
+        return type;
     }
 
     public Map<String, String> getExts() {
