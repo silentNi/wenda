@@ -25,3 +25,4 @@
 /.nb-gradle/
 ### my ignore ###
 /class-document/
+application.properties
